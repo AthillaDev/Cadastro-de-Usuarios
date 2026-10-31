@@ -27,3 +27,16 @@ export async function cadastrarUsuario(usuario) {
 export async function excluirUsuario(id) {
   await api.delete(`/usuarios/${id}`);
 }
+
+/**
+ * Atualiza todos os dados de um usuário (PUT substitui o registro inteiro).
+ * Precisa enviar os quatro campos: name, email, age e genero.
+ * @param {string} id
+ * @param {{name: string, email: string, age: number, genero: string}} usuario
+ * @returns {Promise<object>} O usuário atualizado, como devolvido pela API.
+ */
+export async function atualizarUsuario(id, usuario) {
+  const { data } = await api.put(`/usuarios/${id}`, usuario);
+
+  return data;
+}

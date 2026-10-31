@@ -1,4 +1,4 @@
-// Tela de lista de usuários: busca os dados na API, mostra os cards e permite excluir.
+// Tela de lista de usuários: busca os dados na API, mostra os cards, permite editar e excluir.
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,9 +6,17 @@ import { listarUsuarios, excluirUsuario } from "../../services/usuarios.js";
 
 import Button from "../../components/Button/index.jsx";
 import TopBackground from "../../components/TopBackground/index.jsx";
-import { Conteiner, Title, Mensagem } from "../../styles/shared.js";
-import { Aviso, CardUsers, ConteinerUsers, BotaoExcluir } from "./styles.js";
 import Avatar from "../../components/Avatar/index.jsx";
+import ModalEdicao from "../../components/ModalEdicao/index.jsx";
+import { Conteiner, Title, Mensagem } from "../../styles/shared.js";
+import {
+  Aviso,
+  CardUsers,
+  ConteinerUsers,
+  Acoes,
+  BotaoEditar,
+  BotaoExcluir,
+} from "./styles.js";
 import Trash from "../../assets/trash.svg";
 
 /**
@@ -41,6 +49,8 @@ function ListUsers() {
   // Começa como true porque a lista ainda não foi buscada quando a tela abre.
   const [loading, setLoading] = useState(true);
   const [mensagem, setMensagem] = useState({ texto: "", tipo: "" });
+  // Usuário que está sendo editado. Quando é null, a janela de edição está fechada.
+  const [usuarioEditando, setUsuarioEditando] = useState(null);
 
   // Busca os usuários uma vez, quando a tela abre. O array [] vazio faz o efeito rodar só na montagem.
   useEffect(() => {
@@ -83,6 +93,19 @@ function ListUsers() {
     }
   }
 
+  /**
+   * Chamada pelo modal depois que a API salvou a alteração.
+   * Troca o card do usuário pelos dados novos e fecha a janela.
+   * @param {object} usuarioAtualizado
+   */
+  function salvarEdicao(usuarioAtualizado) {
+    setUsers((atuais) =>
+      atuais.map((user) => (user.id === usuarioAtualizado.id ? usuarioAtualizado : user))
+    );
+    setUsuarioEditando(null);
+    setMensagem({ texto: "Usuário atualizado com sucesso!", tipo: "sucesso" });
+  }
+
   return (
     <Conteiner>
       <TopBackground />
@@ -106,18 +129,35 @@ function ListUsers() {
               <p>Idade: {user.age}</p>
               <p>{user.email}</p>
             </div>
-            {/* A imagem é decorativa (alt vazio): o nome no aria-label informa a função do botão. */}
-            <BotaoExcluir
-              type="button"
-              aria-label={`Excluir ${user.name}`}
-              title="Excluir usuário"
-              onClick={() => deleteUsers(user.id)}
-            >
-              <img src={Trash} alt="" />
-            </BotaoExcluir>
+            <Acoes>
+              <BotaoEditar
+                type="button"
+                aria-label={`Editar ${user.name}`}
+                onClick={() => setUsuarioEditando(user)}
+              >
+                Editar
+              </BotaoEditar>
+              {/* A imagem é decorativa (alt vazio): o nome no aria-label informa a função do botão. */}
+              <BotaoExcluir
+                type="button"
+                aria-label={`Excluir ${user.name}`}
+                title="Excluir usuário"
+                onClick={() => deleteUsers(user.id)}
+              >
+                <img src={Trash} alt="" />
+              </BotaoExcluir>
+            </Acoes>
           </CardUsers>
         ))}
       </ConteinerUsers>
+
+      {usuarioEditando && (
+        <ModalEdicao
+          usuario={usuarioEditando}
+          onSalvar={salvarEdicao}
+          onFechar={() => setUsuarioEditando(null)}
+        />
+      )}
 
       <Button type="button" onClick={() => navigate("/")} theme="secondary">
         Voltar

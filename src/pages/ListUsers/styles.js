@@ -55,12 +55,41 @@ export const CardUsers = styled.div`
   }
 `;
 
+// Agrupa os botões de ação do card (editar e excluir) lado a lado.
+export const Acoes = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+`;
+
+// Botão de editar. Usa texto, para ficar claro o que ele faz.
+export const BotaoEditar = styled.button`
+
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+`;
+
 // Botão da lixeira. É um <button> para funcionar com teclado e leitores de tela.
 export const BotaoExcluir = styled.button`
 
   background: none;
   border: none;
-  padding: 0 0 0 30px;
+  padding: 0;
   border-radius: 8px;
   cursor: pointer;
   flex-shrink: 0;
