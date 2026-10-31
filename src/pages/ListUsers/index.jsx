@@ -7,7 +7,8 @@ import { listarUsuarios, excluirUsuario } from "../../services/usuarios.js";
 import Button from "../../components/Button/index.jsx";
 import TopBackground from "../../components/TopBackground/index.jsx";
 import { Conteiner, Title, Mensagem } from "../../styles/shared.js";
-import { Aviso, CardUsers, ConteinerUsers, BotaoExcluir, AvatarUsers } from "./styles.js";
+import { Aviso, CardUsers, ConteinerUsers, BotaoExcluir } from "./styles.js";
+import Avatar from "../../components/Avatar/index.jsx";
 import Trash from "../../assets/trash.svg";
 
 /**
@@ -99,7 +100,7 @@ function ListUsers() {
         {/* key deve ser único em cada item da lista, para o React atualizar só o que mudou. */}
         {users.map((user) => (
           <CardUsers key={user.id}>
-            <AvatarUsers src={getAvatarUrl(user)} alt={`Avatar de ${user.name}`} />
+            <Avatar src={getAvatarUrl(user)} nome={user.name} />
             <div>
               <h3>{user.name}</h3>
               <p>Idade: {user.age}</p>

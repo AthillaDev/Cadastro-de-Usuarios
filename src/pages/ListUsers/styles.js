@@ -79,9 +79,3 @@ export const BotaoExcluir = styled.button`
   }
 `;
 
-// Avatar com tamanho fixo, para o card não mudar de forma enquanto a imagem carrega.
-export const AvatarUsers = styled.img`
-  width: 80px;
-  height: 80px;
-  flex-shrink: 0;
-`;
