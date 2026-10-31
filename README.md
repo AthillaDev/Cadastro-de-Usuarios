@@ -100,7 +100,7 @@ Cada página tem um `index.jsx` com a lógica e um `styles.js` com o visual.
 ## Observações
 
 - **Avatares:** as imagens vêm do serviço externo [Avatars Placeholder](https://github.com/mhshariatipour1378/Avatars-Placeholder). Os avatares são aleatórios mesmo com o parâmetro `username`, então a imagem pode mudar ao recarregar a página. Isso é um comportamento do serviço.
-- **Gênero e avatar:** o gênero escolhido define o conjunto de avatares (`/boy` ou `/girl`). Na verificação feita, os conjuntos apareceram invertidos em relação à documentação do serviço. Está mapeado no código de `src/pages/ListUsers/index.jsx`.
+- **Gênero e avatar:** `masculino` usa o conjunto `/boy` e `feminino` usa `/girl`, conforme a documentação do serviço. O mapeamento está em `src/pages/ListUsers/index.jsx`.
 - **Usuários antigos:** registros criados antes da escolha de gênero não têm o campo `genero` e recebem um avatar genérico.
 
 ## Licença

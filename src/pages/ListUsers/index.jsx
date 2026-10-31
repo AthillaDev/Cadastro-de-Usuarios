@@ -18,8 +18,8 @@ import Trash from "../../assets/trash.svg";
  * "username", então a imagem pode mudar a cada carregamento. Isso é um comportamento da API,
  * não do código.
  *
- * Observação: "masculino" usa /girl e "feminino" usa /boy porque, na verificação visual,
- * o serviço mostrou os conjuntos invertidos em relação à documentação. Teste antes de alterar.
+ * "masculino" usa /boy e "feminino" usa /girl, conforme a documentação do serviço
+ * e confirmado em teste (/boy mostra avatares masculinos e /girl mostra femininos).
  *
  * @param {{id: string, genero?: string}} user
  * @returns {string} URL da imagem.
@@ -27,8 +27,8 @@ import Trash from "../../assets/trash.svg";
 function getAvatarUrl(user) {
   const base = "https://avatarapi.runflare.run/public";
 
-  if (user.genero === "masculino") return `${base}/girl?username=${user.id}`;
-  if (user.genero === "feminino") return `${base}/boy?username=${user.id}`;
+  if (user.genero === "masculino") return `${base}/boy?username=${user.id}`;
+  if (user.genero === "feminino") return `${base}/girl?username=${user.id}`;
 
   // Usuários cadastrados antes da escolha de gênero recebem um avatar genérico.
   return `${base}?username=${user.id}`;
