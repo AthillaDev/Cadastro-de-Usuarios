@@ -28,7 +28,7 @@ function Avatar({ src, nome }) {
 
   if (imagemFalhou) {
     return (
-      <AvatarIniciais role="img" aria-label={`Avatar de ${nome}`}>
+      <AvatarIniciais role="img" aria-label={`Avatar de ${nome}`} translate="no">
         {gerarIniciais(nome)}
       </AvatarIniciais>
     );
