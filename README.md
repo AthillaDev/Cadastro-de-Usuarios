@@ -25,7 +25,7 @@ Interface em React para cadastrar, listar, editar e excluir usuários. Consome u
 
 - [GitHub](https://github.com/) para o código-fonte
 - [Vercel](https://vercel.com/) para publicar o front
-- A API roda em [Render](https://render.com/), com banco no [MongoDB Atlas](https://www.mongodb.com/atlas). Veja o README do back-end.
+- A API roda em [Render](https://render.com/), com banco no [MongoDB Atlas](https://www.mongodb.com/atlas). Repositório do back-end: [AthillaDev/API-Nodes](https://github.com/AthillaDev/API-Nodes).
 
 ## Pré-requisitos
 
