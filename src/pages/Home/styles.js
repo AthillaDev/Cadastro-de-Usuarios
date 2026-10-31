@@ -9,6 +9,8 @@ export const Form = styled.form`
     align-items: center;
     gap: 20px;
     max-width: 500px;
+    /* Garante espaço até o botão "Ver Lista", mesmo quando as mensagens de erro aumentam o formulário. */
+    margin-bottom: 40px;
 `
 
 // Linha que agrupa nome e idade lado a lado.
