@@ -14,7 +14,8 @@ export const Conteiner = styled.div`
 
 export const Title = styled.h2`
   color: #fff;
-  font-size: 38px;
+  /* clamp(mínimo, ideal, máximo): o título diminui em telas pequenas, mas nunca passa de 38px. */
+  font-size: clamp(28px, 6vw, 38px);
   font-weight: 800;
   font-style: normal;
   text-align: center;

@@ -18,6 +18,11 @@ export const ConteinerInput = styled.div`
 
     display: flex;
     gap: 20px;
+
+    /* Em telas estreitas, nome e idade empilham em vez de ficar apertados lado a lado. */
+    @media (max-width: 500px) {
+        flex-direction: column;
+    }
 `
 
 // Bloco que ocupa toda a largura do formulário (rótulo + campo + erro).
@@ -35,6 +40,8 @@ export const Input = styled.input`
    padding: 20px;
    outline: none;
    width: 100%;
+   /* 16px ou mais evita que o iPhone aplique zoom automático ao focar o campo. */
+   font-size: 16px;
 
    /* Como "outline" foi removido, este anel mantém o foco visível para teclado. */
    &:focus {
