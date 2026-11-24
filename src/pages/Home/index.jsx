@@ -66,7 +66,14 @@ function Home() {
     } catch (error) {
       // Erros de rede ou da API caem aqui. O detalhe técnico vai para o console; o usuário vê uma mensagem simples.
       console.error(error)
-      setMensagem({ texto: "Não foi possível cadastrar o usuário.", tipo: "erro" })
+
+      // A API responde 409 quando o e-mail já está cadastrado. Nesse caso, o erro aparece no próprio campo de e-mail.
+      if (error.response?.status === 409) {
+        setErros({ email: "Este e-mail já está cadastrado." })
+        setMensagem({ texto: "Corrija os campos destacados.", tipo: "erro" })
+      } else {
+        setMensagem({ texto: "Não foi possível cadastrar o usuário.", tipo: "erro" })
+      }
     }
   }
 
