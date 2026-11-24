@@ -1,4 +1,4 @@
-# Cadastro de Usuários (Front-end)
+# User Management Dashboard(Front-end)
 
 Interface em React para cadastrar, listar, editar e excluir usuários. Consome uma API REST em Node.js com MongoDB. O projeto nasceu como estudo de React, Vite, React Router e styled-components, e foi evoluindo para uma aplicação publicada na Vercel.
 
