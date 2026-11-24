@@ -1,4 +1,4 @@
-# User Management Dashboard(Front-end)
+# User Management Dashboard | React & Vite
 
 Interface em React para cadastrar, listar, editar e excluir usuários. Consome uma API REST em Node.js com MongoDB. Dashboard de Gestão de Usuários (SPA), React, Vite, React Router e styled-components, e foi evoluindo para uma aplicação publicada na Vercel.
 
